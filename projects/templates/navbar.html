@@ -1,0 +1,59 @@
+{% load bootstrap3 %}
+{%load static%}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  {% block styles %}
+  {% bootstrap_css %}
+  <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+  <link href="https://fonts.googleapis.com/css?family=Margarine" rel="stylesheet">
+  {% endblock %}
+  <title>awwards</title>
+</head>
+
+<body>
+  {%block content%}
+  <br>
+  <br>
+  <div class="navbar-group">
+    <nav class="navbar" style="display:flex;justify-content:space-evenly;">
+      <br>
+      <a style="float:left;" class="navbar-brand" href="{%url 'landing'%}">HOME
+      </a>
+      <a style="float:left;" class="navbar-brand" href="{%url 'projects'%}">PROJECTS
+      </a>
+      <h1 align="center">awwwwards</h1>
+      <br>
+      <br>
+      {% if user.is_authenticated %}
+      <div style="display:inline-block;float:right;">
+        <a style="float:right;" class="navbar-brand" href="{%url 'profile'%}">PROFILE
+        </a>
+        <a style="float:right;" class="navbar-brand" href="/accounts/password/change">
+          Change Password
+        </a>
+        <a style="float:right;" class="navbar-brand" href="/logout">
+          Logout
+        </a>
+        {% else %}
+        <a style="float:right" class='btn btn-default' href="/accounts/login">Login</a>
+
+        {% endif %}
+
+
+    </nav>
+<hr>
+  </div>
+  {%endblock%}
+
+
+
+  {% block scripts %}
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  {% bootstrap_javascript %}
+  {% endblock %}
+</body>
+
+</html>

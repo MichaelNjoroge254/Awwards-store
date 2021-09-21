@@ -1,0 +1,3 @@
+Hello {{name}}
+
+Welcome to the Awwards website.You can find the best website designs,post projects that you have done and see other projects posted.As a user you can also be able to rate other projects posted. 

@@ -1,0 +1,52 @@
+{%extends 'base.html'%}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Awwwards</title>
+</head>
+
+<body>
+  {%block content%}
+  <div class="container">
+    <div class="container-fluid">
+      <div class="row" style="background-color:black;">
+        <div class="col-md-6" style="padding:20px;" align="center">
+          <img style="border-radius:70%;" src="{{user.profile.dpicture.url}}"
+            height=200px width=200px>
+          <p style="color:white">@{{user.username}}</p>
+          <p style="color:white"> Contacts:{{user.profile.contacts}}</p>
+          <p style="color:white">Bio : {{user.profile.bio}}</p>
+          <p style="color:white">{{user.bio}}</p>
+          <a href="{%url 'editdp'%}"> <button type="button" name="button">Edit profile</button> </a>
+        </div>
+      </div>
+      <br>
+      <br>
+      <div class="col-md-7" style="margin-left:250px;">
+        {%for proj in project%}
+        <div class="panel panel-danger" align="center" align="center">
+          <div class="panel-heading">
+            <h3>{{proj.title}}</h3>
+            <p>{{proj.description}}</p>
+          </div>
+          <div class="panel-body">
+            <a href="{{proj.link}}" target="_blank"><img src="{{proj.landingpic.url}}" width=500px></a>
+          </div>
+          <div class="panel-footer">
+            <p>Username :{{proj.user}}</p>
+          </div>
+
+        </div>
+        {%endfor%}
+      </div>
+
+    </div>
+
+  </div>
+
+  {%endblock%}
+</body>
+
+</html>
