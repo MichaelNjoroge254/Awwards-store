@@ -34,7 +34,7 @@ An application that will allow a user to post a project he/she has created and g
 |A user can search for other projects|project name|Project's' found|
 
 ## Technologies used
-* Python3.8
+* Python3.8.10
 
 * HTML
 
