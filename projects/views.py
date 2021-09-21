@@ -58,7 +58,7 @@ def profile(request):
     profile=Profile.objects.all()
     user = request.user
     project = Project.objects.filter(user=user)
-    return render(request,'profile.html',{"profile":profile,"project":project})
+    return render(request,'profile.html',{"project":project})
 
 @login_required(login_url='/accounts/login/')
 def editdp(request):
