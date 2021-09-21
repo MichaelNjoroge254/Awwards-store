@@ -2,12 +2,9 @@
 An application that will allow a user to post a project he/she has created and get it reviewed by his/her peers.
 
 # Awwwards
+https://awards12.herokuapp.com/
 
-## Description
-
-This is a django website that enebles users to signin and  be bale to post their projects .Other users can also review the app  https://awards12.herokuapp.com/
-
-## By Sarah Tuitoek
+## By Michael Njoroge
 
 ## Set-up instructions/installations
 ```
@@ -15,9 +12,6 @@ This is a django website that enebles users to signin and  be bale to post their
 - Clone the project on your terminal
 - Create a virtual environment
 - Run the application by writing the code below in terminal
-  - chmod a+x start.sh
-  - ./start.sh
-  ```
 
 ## User Stories
 
