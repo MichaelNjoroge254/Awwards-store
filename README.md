@@ -46,7 +46,7 @@ An application that will allow a user to post a project he/she has created and g
 For now there are no known bugs but the future implementations are being worked on.
 
 ## support and contact details
-For any problems encountered or any help needed you could please contact me through sjtoek@gmail.com
+For any problems encountered or any help needed you could please contact me through michael_254@gmail.com
 
 License
 MIT©
