@@ -32,10 +32,9 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'projects',
-    'bootstrap3',
-    'star_ratings',
-    'rest_framework',
+    'main',
+    'cloudinary',
+    'bootstrap4',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -81,7 +80,7 @@ WSGI_APPLICATION = 'Awwards.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'awwards',
+        'NAME': 'project',
         'USER': 'moringa',
     'PASSWORD':'Calman',
     }
