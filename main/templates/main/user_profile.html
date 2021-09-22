@@ -1,0 +1,98 @@
+{%extends 'main/base.html'%}
+<!-- bootstrap -->
+{% load bootstrap4 %}
+<!-- html -->
+{% block content %}
+<!-- content -->
+<div class="container-fluid m-4">
+  <div class="user-details">
+    <h4 class="m-2">{{user_profile.user.username.capitalize}}</h4>
+    <div class="profile_picture">
+      <img src="{{user_profile.profile_picture.url}}" alt="" />
+    </div>
+
+    <p class="h5 mt-2">{{user_profile.bio}}</p>
+    <p class="email m-2 h6">{{user_profile.user.email}}</p>
+    <div class="icons">
+      <div class="icon">
+        <a href="{{user_profile.facebook_link}}">
+          <img src="../../static/images/facebook.png" alt="" />
+        </a>
+      </div>
+
+      <div class="icon">
+        <a href="{{user_profile.twitter_link}}">
+          <img src="../../static/images/twitter.png" alt="" />
+        </a>
+      </div>
+
+      <div class="icon">
+        <a href="{{user_profile.github_link}}">
+          <img src="../../static/images/github.png" alt="" />
+        </a>
+      </div>
+    </div>
+  </div>
+  <hr />
+  <div class="projects-wrapper">
+    <div class="row">
+      {% for project in projects %}
+      <div class="col-md-4 p-4">
+        <div class="card">
+          <div class="card-image">
+            <img
+              src="{{project.project_image.url}}"
+              class="card-img-top"
+              alt="..."
+            />
+          </div>
+
+          <div class="card-center">
+            <p>
+              <a
+                href="{%url 'main:project_view' project.id%}"
+                class="btn btn-outline-light btn-lg"
+              >
+                View
+              </a>
+            </p>
+          </div>
+
+          <div class="card-bottom-right">
+            <div class="icon">
+              <a href="{{project.link}}">
+                <img src="../../static/images/next.png" alt="" />
+              </a>
+            </div>
+          </div>
+
+          <div class="card-body m-0 p-0">
+            <p class="card-text m-1 h4">
+              <b> {{project.name}} </b>
+            </p>
+          </div>
+          <div class="footer">
+            {% if project.user.location %}
+            <h5 class="m-0 p-0">from {{project.user.location}}</h5>
+            {%else%}
+            <h5 class="m-0 p-0">from Hometown</h5>
+            {% endif %}
+            <h5 class="m-0 p-0">{{project.posted_at|date}}</h5>
+          </div>
+          <!-- <div class="project-owner">
+            <h5 class="m-3 p-0">
+              by
+              <a href="{%url 'main:user_profile' project.user.user.username%}">
+                {{project.user.user.username}}
+              </a>
+            </h5>
+          </div> -->
+        </div>
+      </div>
+
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% endblock%}

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Awwwards</title>
+    <link rel="stylesheet" href="../static/css/navbar.css" />
+    <link
+      rel="stylesheet"
+      href="  https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/fontawesome.min.css"
+      integrity="sha384-wESLQ85D6gbsF459vf1CiZ2+rr+CsxRY0RpiF1tLlQpDnAgg6rwdsUF1+Ics2bni"
+      crossorigin="anonymous"
+    />
+    <script src="https://use.fontawesome.com/c86a47b179.js"></script>
+  </head>
+  <body>
+    {% load static%}
+    <nav class="navbar m-0 p-0 d-flex">
+      {% if user.is_authenticated %}
+      <ul class="nav-user ml-3">
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link"
+            href="#"
+            id="navbarDropdownMenuLink"
+            role="button"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            <div class="user-icon">
+              <i class="fa fa-bars menu-icon fa-2x" aria-hidden="true"></i>
+              <span>{{user}}</span>
+            </div>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="/">Home</a>
+            <div class="dropdown-divider"></div>
+            <a
+              class="dropdown-item"
+              href="{%url 'main:profile' username=user.username %}"
+              >Profile</a
+            >
+
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="/logout">Logout</a>
+          </div>
+        </li>
+      </ul>
+      {%else%}
+      <ul class="nav-user ml-5 pt-3">
+        <li>
+          <a class="btn btn-outline-default" href="login">
+            <b> REGISTER/LOGIN </b>
+          </a>
+        </li>
+      </ul>
+      {%endif%}
+      <a class="navbar-brand ml-5" href="/">
+        <img src="../../static/images/awwwards.jpg" alt="" />
+      </a>
+      <ul class="last-link m-0">
+        <li class="nav-item d-flex">
+          <!-- {% if user.is_authenticated %} -->
+          <div class="m-0 p-0 nav-form">
+            <form
+              class="form-inline"
+              action="{% url 'main:search_results' %}"
+              id="searchform"
+              role="search"
+            >
+              <input
+                class="form-control text-center"
+                type="search"
+                placeholder="Search"
+                aria-label="Search"
+                id="searching"
+                name="search_project"
+              />
+            </form>
+          </div>
+          <!-- {%else%}
+          <div class="m-0 p-0 nav-form">
+            <li>
+              <a class="nav-item" href="login">Login</a>
+            </li>
+          </div>
+          {%endif%} -->
+          <!-- <li>
+              <a class="nav-item" href="login">Login</a>
+            </li> -->
+          <div class="submit-project-btn">
+            <a
+              class="nav-link mr-0 text-white"
+              href="{%url 'main:post_project'%}"
+            >
+              <h5 class="m-0 p-0">Submit Project</h5>
+            </a>
+          </div>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- <div class=" last-link d-flex mr-3 m-0">
+        <div class="navbar-form">
+        
+        </div>
+       
+      </div> -->
+  </body>
+</html>

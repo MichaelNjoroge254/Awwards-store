@@ -1,0 +1,32 @@
+{% extends 'registration/base.html' %}
+<!-- bootstrap -->
+{% load bootstrap4 %}
+<!-- content -->
+{% block content %} {% load static %}
+<div class="container mt-5">
+  <div class="text-center login">
+    <img src="../../static/images/awwwards.jpg" alt="" />
+  </div>
+  <div class="form">
+    <p class="text-center h4">
+      <b> Login </b>
+    </p>
+    <form action="" method="post" novalidate>
+      {%csrf_token%} {% bootstrap_form form %}
+      <button type="submit" class="btn btn-primary btn-lg mx-auto">
+        Log In
+      </button>
+    </form>
+
+    <div class="password text-center mt-3">
+      <a href="" class="mx-auto mb-3">Forgot password? </a>
+    </div>
+    <hr />
+    <div class="reg-link text-center">
+      Don't have an account?
+      <a href="{% url 'main:signup' %}">Sign up</a>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

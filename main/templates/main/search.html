@@ -1,0 +1,72 @@
+{%extends 'main/base.html'%}
+<!-- bootstrap -->
+{% load bootstrap4 %}
+<!-- html -->
+{% block content %}
+<!-- content -->
+<div class="container-fluid mt-4">
+  <div class="container-fluid mt-4 pl-3 pr-3">
+    <h4 class="text-center mb-3">Search Results</h4>
+    <div class="row mb-4 p-3">
+      {% for project in projects %}
+      <div class="col-md-4 p-4">
+        <div class="card">
+          <div class="card-image">
+            <img
+              src="{{project.project_image.url}}"
+              class="card-img-top"
+              alt="..."
+            />
+          </div>
+
+          <div class="card-center">
+            <p>
+              <a
+                href="{%url 'main:project_view' project.id%}"
+                class="btn btn-outline-light btn-lg"
+              >
+                View
+              </a>
+            </p>
+          </div>
+          <div class="card-bottom-right">
+            <div class="icon">
+              <a href="{{project.link}}">
+                <img src="../../static/images/next.png" alt="" />
+              </a>
+            </div>
+          </div>
+
+          <div class="card-body m-0 p-0">
+            <p class="card-text m-1 h4">
+              <b> {{project.name}} </b>
+            </p>
+          </div>
+          <div class="footer">
+            {% if project.user.location %}
+            <h5 class="m-0 p-0">from {{project.user.location}}</h5>
+            {%else%}
+            <h5 class="m-0 p-0">from Hometown</h5>
+            {% endif %}
+            <h5 class="m-0 p-0">{{project.posted_at|date}}</h5>
+          </div>
+          <div class="project-owner">
+            <h5 class="m-3 p-0">
+              by
+              <a href="{%url 'main:user_profile' project.user.user.username%}">
+                {{project.user.user.username}}
+              </a>
+            </h5>
+          </div>
+        </div>
+      </div>
+      {%empty%}
+
+      <h4 class="text-center">No user found search-term {{message}}</h4>
+
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% endblock%}

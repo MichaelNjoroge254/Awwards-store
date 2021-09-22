@@ -1,0 +1,96 @@
+{%extends 'main/base.html'%}
+<!-- bootstrap -->
+{% load bootstrap4 %}
+<!-- html -->
+{% block content %}
+<!-- content -->
+<div class="container-fluid mt-4 project-wrapper">
+  <div class="project-rating">
+    <div class="top-right">
+      <a href="{{project.link}}" class="btn btn-visit"> Visit Site</a>
+    </div>
+    <div class="image-wrapper">
+      <img src="{{project.project_image.url}}" alt="" />
+    </div>
+    <div class="project-details text-center">
+      <p class="project-name text-white m-0">{{project.name}}</p>
+      <p class="project-user m-0">
+        BY
+        <a href="{%url 'main:user_profile' project.user.user.username%}">
+          <span> {{project.user.user.username}} </span>
+        </a>
+        FROM {{project.user.location}}
+      </p>
+    </div>
+    {% if ratings %}
+    <div class="rating-container text-center">
+      <div class="score">
+        <div class="first">{{ ratings.design_average }}</div>
+        <span>Design Average</span>
+      </div>
+      <div class="score">
+        <div class="second">{{ ratings.usability_average }}</div>
+        <span>Usability Average</span>
+      </div>
+      <div class="score">
+        <div class="third">{{ ratings.content_average }}</div>
+        <span>Content Average</span>
+      </div>
+      <div class="score">
+        <div class="last">{{ ratings.score }}</div>
+        <span>Average Score</span>
+      </div>
+    </div>
+    {%else%}
+    <div class="rating-container text-center">
+      <div class="score">
+        <div class="first">0.00</div>
+        <span>Design Average</span>
+      </div>
+      <div class="score">
+        <div class="second">0.00</div>
+        <span>Usability Average</span>
+      </div>
+      <div class="score">
+        <div class="third">0.00</div>
+        <span>Content Average</span>
+      </div>
+      <div class="score">
+        <div class="last">0.00</div>
+        <span>Average Score</span>
+      </div>
+    </div>
+    {% endif %}
+  </div>
+  <div class="tags-wrapper text-center m-4">
+    <p class="h4"><b> Description </b></p>
+    <p class="h5">{{project.description}}</p>
+
+    <p class="h4"><b> Technologies </b></p>
+    {% for tag in tech_tags %}
+    <button class="btn-tag mr-2">{{tag}}</button>
+
+    {% endfor %}
+  </div>
+  <div class="form-wrapper mb-5">
+    {% if rates_status%}
+
+    <p class="m-4 text-center h4">You have already voted</p>
+    {%else%}
+    <div class="form">
+      <p class="text-center h3">Rate Project</p>
+      <form
+        action="{%url 'main:project_view' project.id %}"
+        method="post"
+        enctype="multipart/form-data"
+      >
+        {%csrf_token%} {% bootstrap_form form %}
+        <input type="submit" class="btn btn-success" value="Vote" />
+      </form>
+    </div>
+
+    {% endif %}
+  </div>
+</div>
+
+{% endblock%}

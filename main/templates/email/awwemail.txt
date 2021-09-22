@@ -1,0 +1,6 @@
+
+Hello {{name}} {{date}}
+
+Welcome to Awwards clone. 
+
+This is an Awwwards Clone website made with Django.It allows a registered user to upload projects so that it can be rated
