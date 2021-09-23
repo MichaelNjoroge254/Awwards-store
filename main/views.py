@@ -62,7 +62,7 @@ def post_project(request):
             project = form.save(commit=False)
             project.user = user
             project.save()
-            return redirect('/')
+        return redirect('/')
     else:
         form = SubmitProjectForm()
     ctx = {
