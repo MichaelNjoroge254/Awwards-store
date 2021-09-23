@@ -83,6 +83,8 @@ DATABASES = {
         'NAME': 'project',
         'USER': 'moringa',
     'PASSWORD':'Calman',
+    'HOST':'localhost',
+    'PORT':'',
     }
 }
 
