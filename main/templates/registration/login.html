@@ -14,12 +14,12 @@
     <form action="" method="post" novalidate>
       {%csrf_token%} {% bootstrap_form form %}
       <button type="submit" class="btn btn-primary btn-lg mx-auto">
-        Log In
+        <span href="{% url 'main:home' %}" class="mx-auto mb-3">Log In </span>
       </button>
     </form>
 
     <div class="password text-center mt-3">
-      <a href="" class="mx-auto mb-3">Forgot password? </a>
+      <a href="/accounts/password_reset/" class="mx-auto mb-3">Forgot password? </a>
     </div>
     <hr />
     <div class="reg-link text-center">
