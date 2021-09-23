@@ -20,7 +20,8 @@
         </div>
         <div class="panel-body">
           <form action="{%url 'main:signup'%}" method="post">
-            {% csrf_token %} {% bootstrap_form form %}
+            {% csrf_token %} 
+            {% bootstrap_form form %}
             <div class="form-group">
               <input
                 type="submit"
@@ -34,7 +35,7 @@
 
         <div class="reg-link text-center mb-2">
           Already have an account?
-          <a href="/login">Login</a>
+          <a href="{% url 'main:login' %}">Login</a>
         </div>
       </div>
     </div>
